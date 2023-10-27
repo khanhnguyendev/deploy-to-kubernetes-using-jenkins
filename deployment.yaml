@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-elite-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-boot-elite
+  template:
+    metadata:
+      labels:
+        app: spring-boot-elite
+    spec:
+      containers:
+        - name: spring-boot-elite
+          image: 028527707779.dkr.ecr.ap-northeast-1.amazonaws.com/spring-boot-elite:latest
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
